@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Login &middot; Let's Chat</title>
+        <meta name="description" content="" />
+        <link rel="icon" type="image/png" href="./media/favicon.ico" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+        
+        <link rel="stylesheet" href="./media/dist/vendor.css" />
+        <link rel="stylesheet" href="./media/dist/style.css" />
+        
+    </head>
+    <body class="lcb-login animated fadeIn" 
+    style="background-image: url('./media/img/photos/storm.jpg');"
+>
+        
+    <section class="lcb-login-main">
+        <h1 class="lcb-login-logo">Let<span class="flavour">'</span>s Chat</h1>
+        <div class="lcb-login-boxes">
+            <form class="lcb-login-box lcb-login-box-login validate" action="./account/login" method="post" data-refresh="true">
+                <h2 class="lcb-login-box-heading"><i class="fa fa-frown-o"></i> Bad Code</h2>
+                               
+                <h2 class="lcb-transcript-heading">You didn't enter the right code</h2>
+                <div class="lcb-login-box-bottom">
+                    <div class="links pull-left">
+                        <a id="hint-link" href="#" class="lcb-show-box" onclick="hintClick()">
+                            Just tell me how to get the code
+                        </a>
+                        <div id="hint-details" class="lcd-show-box-detais" style="display: none;">
+                            <h4>You should actually run</h4>
+                            <p>kubectl exec -it {%HOSTNAME%} -- cat /etc/lets-chat/code.txt</p>
+                        </div>
+                    </div>
+                    
+                    <div class="links pull-right">
+                        <a href="/" class="lcb-show-box" >
+                            Try Again
+                        </a>
+                    </div>
+                        
+                </div>
+            </form>
+           
+            
+            <footer class="lcb-login-footer">
+                <p class="lcb-login-footer-heart">
+                    <i class="fa fa-heart"></i> From Toronto with Love <span class="dash">&mdash;</span>
+                    Photos by <a href="http://funkaoshi.com/" target="_blank">Ramanan Sivaranjan</a> and Friends
+                </p>
+                <p class="lcb-login-footer-github"><a href="https://github.com/sdelements/lets-chat" target="_blank">
+                    <i class="fa fa-github"></i> Fork me on GitHub &raquo;</a>
+                </p>
+            </footer>
+        </div>
+    </section>
+    <script>
+
+        function hintClick() {
+            console.log("PUSSSHED The hint!!!");
+            var hintLink = document.getElementById("hint-link");
+            var hintDetails = document.getElementById("hint-details");
+            hintLink.setAttribute("style", "display: none;");
+            hintDetails.setAttribute("style", "display");
+        }
+        
+    </script>
+
+        
+    </body>
+</html>
