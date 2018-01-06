@@ -31,12 +31,12 @@ echo "  ╚████╔╝  ███████╗ "
 echo "   ╚═══╝   ╚══════╝ "
 
 
-#echo " ██╗   ██╗  ██╗ "
-#echo " ██║   ██║ ███║ "
-#echo " ██║   ██║ ╚██║ "
-#echo " ╚██╗ ██╔╝  ██║ "
-#echo "  ╚████╔╝   ██║ "
-#echo "   ╚═══╝    ╚═╝ "
+# echo " ██╗   ██╗  ██╗ "
+# echo " ██║   ██║ ███║ "
+# echo " ██║   ██║ ╚██║ "
+# echo " ╚██╗ ██╔╝  ██║ "
+# echo "  ╚████╔╝   ██║ "
+# echo "   ╚═══╝    ╚═╝ "
 
 echo
 echo
@@ -67,9 +67,9 @@ server {
   # Or if you want to accept large git objects over http
   client_max_body_size 20m;
 
-  # individual nginx logs for this gitlab vhost
-  access_log  /dev/stdout;
-  error_log   /dev/stdout info;
+  # individual nginx logs for this letschat vhost
+  access_log  /var/log/nginx/letschat/letschat.log;
+  error_log   /var/log/nginx/letschat/letschat.log info;
   root /var/lib/nginx/lets-chat;
 
   location =/ {
@@ -106,7 +106,7 @@ server {
     proxy_pass http://lets_chat;
   }
 
-  error_page 502 /500.html;
+  error_page 500 501 502 503 504 /500.html;
 }
 EOF
 
@@ -131,8 +131,8 @@ server {
   client_max_body_size 20m;
 
   # individual nginx logs for this gitlab vhost
-  access_log  /dev/stdout;
-  error_log   /dev/stdout info;
+  access_log  /var/log/nginx/letschat/letschat.log;
+  error_log   /var/log/nginx/letschat/letschat.log info;
 
   location / {
     root /var/lib/nginx/lets-chat;
@@ -157,7 +157,7 @@ server {
     proxy_pass http://lets_chat;
   }
 
-  error_page 502 /500.html;
+  error_page 500 501 502 503 504 /500.html;
 }
 EOF
 
@@ -173,5 +173,8 @@ fi
 sed -i "s/{%HOSTNAME%}/${HOSTNAME}/g" /var/lib/nginx/lets-chat/index.html
 sed -i "s/{%HOSTNAME%}/${HOSTNAME}/g" /var/lib/nginx/lets-chat/bad-code.html
 
+mkdir -p /var/log/nginx/letschat
+touch /var/log/nginx/letschat/letschat.log
+tail -f /var/log/nginx/letschat/letschat.log &
 # Run Nginx
 nginx -g 'daemon off;'
