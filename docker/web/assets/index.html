@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Login &middot; Let's Chat</title>
+        <meta name="description" content="" />
+        <link rel="icon" type="image/png" href="./media/favicon.ico" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+        
+        <link rel="stylesheet" href="./media/dist/vendor.css" />
+        <link rel="stylesheet" href="./media/dist/style.css" />
+        
+    </head>
+    <body class="lcb-login animated fadeIn" 
+    style="background-image: url('./media/img/photos/skyscraper.jpg');"
+>
+        
+    <section class="lcb-login-main">
+        <h1 class="lcb-login-logo">Let<span class="flavour">'</span>s Chat</h1>
+        <div class="lcb-login-boxes">
+            <form class="lcb-login-box lcb-login-box-login validate" action="./auth-code" method="get" data-refresh="true">
+                <h2 class="lcb-login-box-heading">Welcome!</h2>
+                               
+                <h4>You have reached Front-End server running on POD:</h4>
+                <h4 style="color:blue;">{%HOSTNAME%}</h4> 
+                <h4>To proceed, please enter the code</h4>
+                <div class="form-group">
+                    <input class="required form-control" placeholder="The Code" name="code" type="text" autofocus />
+                </div>
+                
+                <div class="lcb-login-box-bottom">
+                    
+                        <div class="links pull-left">
+                            <a id="hint-link" href="#" class="lcb-show-box" onclick="hintClick()">
+                                WTF is the code?
+                            </a>
+                            <div id="hint-details" class="lcd-show-box-detais" style="display: none;">
+                                <h4>You can find it in the Front-End server at</h4>
+                                <h4>/etc/lets-chat/code.txt</h4>
+                            </div>
+                        </div>
+                    
+                    <button class="btn-info btn btn-lg pull-right" type="submit">
+                        <i class="fa fa-sign-in"></i>
+                    </button>
+                </div>
+            </form>
+
+                
+           
+            
+            <footer class="lcb-login-footer">
+                <p class="lcb-login-footer-heart">
+                    <i class="fa fa-heart"></i> From Toronto with Love <span class="dash">&mdash;</span>
+                    Photos by <a href="http://funkaoshi.com/" target="_blank">Ramanan Sivaranjan</a> and Friends
+                </p>
+                <p class="lcb-login-footer-github"><a href="https://github.com/sdelements/lets-chat" target="_blank">
+                    <i class="fa fa-github"></i> Fork me on GitHub &raquo;</a>
+                </p>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+
+        function hintClick() {
+            console.log("PUSSSHED The hint!!!");
+            var hintLink = document.getElementById("hint-link");
+            var hintDetails = document.getElementById("hint-details");
+            hintLink.setAttribute("style", "display: none;");
+            hintDetails.setAttribute("style", "display");
+        }
+        
+    </script>
+    </body>
+</html>
