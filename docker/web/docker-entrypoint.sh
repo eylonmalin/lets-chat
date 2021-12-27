@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo 
+echo
 echo
 
 echo "                                                ───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───"
@@ -23,20 +23,20 @@ echo " ╚══════╝ ╚══════╝    ╚═╝    ╚═�
 echo
 echo
 
-echo " ██╗   ██╗ ██████╗  "
-echo " ██║   ██║ ╚════██╗ "
-echo " ██║   ██║  █████╔╝ "
-echo " ╚██╗ ██╔╝ ██╔═══╝  "
-echo "  ╚████╔╝  ███████╗ "
-echo "   ╚═══╝   ╚══════╝ "
+#echo " ██╗   ██╗ ██████╗  "
+#echo " ██║   ██║ ╚════██╗ "
+#echo " ██║   ██║  █████╔╝ "
+#echo " ╚██╗ ██╔╝ ██╔═══╝  "
+#echo "  ╚████╔╝  ███████╗ "
+#echo "   ╚═══╝   ╚══════╝ "
 
 
-# echo " ██╗   ██╗  ██╗ "
-# echo " ██║   ██║ ███║ "
-# echo " ██║   ██║ ╚██║ "
-# echo " ╚██╗ ██╔╝  ██║ "
-# echo "  ╚████╔╝   ██║ "
-# echo "   ╚═══╝    ╚═╝ "
+ echo " ██╗   ██╗  ██╗ "
+ echo " ██║   ██║ ███║ "
+ echo " ██║   ██║ ╚██║ "
+ echo " ╚██╗ ██╔╝  ██║ "
+ echo "  ╚████╔╝   ██║ "
+ echo "   ╚═══╝    ╚═╝ "
 
 echo
 echo
@@ -62,7 +62,7 @@ server {
   listen [::]:80 default_server;
   #server_name 172.17.0.7;     # e.g., server_name source.example.com;
   server_tokens off;     # don't show the version number, a security best practice
-  
+
   # Increase this if you want to upload large attachments
   # Or if you want to accept large git objects over http
   client_max_body_size 20m;
@@ -82,7 +82,7 @@ server {
     # do the remaining stuff
   	rewrite ^(/auth-code).*\$ /bad-code.html last;
   }
-  
+
   location / {
 
     # serve static files from defined root folder;.
@@ -94,7 +94,7 @@ server {
   # then the proxy pass the request to the upsteam (gitlab unicorn)
   location @lets_chat {
   	gzip on;
-      
+
     proxy_redirect     off;
 
     proxy_set_header   X-Forwarded-Proto \$scheme;
@@ -125,7 +125,7 @@ server {
   #server_name ${APP_HOST};     # e.g., server_name source.example.com;
   server_tokens off;     # don't show the version number, a security best practice
   root /dev/null;
-  
+
   # Increase this if you want to upload large attachments
   # Or if you want to accept large git objects over http
   client_max_body_size 20m;
@@ -147,7 +147,7 @@ server {
   	gzip on;
 
   	proxy_redirect     off;
-        
+
     proxy_set_header   X-Forwarded-Proto \$scheme;
     proxy_set_header   Host              \$http_host;
     proxy_set_header   X-Real-IP         \$remote_addr;
