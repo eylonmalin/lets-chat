@@ -177,4 +177,4 @@ mkdir -p /var/log/nginx/letschat
 touch /var/log/nginx/letschat/letschat.log
 tail -f /var/log/nginx/letschat/letschat.log &
 # Run Nginx
-nginx -g 'daemon off;'
+exec nginx -g 'daemon off;'
